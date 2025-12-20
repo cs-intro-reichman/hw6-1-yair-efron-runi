@@ -159,9 +159,9 @@ public class Runigram {
     Color[][] result = new Color[height][width];
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            int srcRow = i * h0 / height;
-            int srcCol = j * w0 / width;
-            result[i][j] =result[srcRow][srcCol];
+            int row = i * h0 / height;
+            int col = j * w0 / width;
+            result[i][j] =image[row][col];
         }
     }
     return result;
@@ -174,7 +174,7 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		int r=(int)(c1.getRed()*alpha+(1-alpha)*c2.getRGB());
+		int r=(int)(c1.getRed()*alpha+(1-alpha)*c2.getRed());
 		int g=(int)(c1.getGreen()*alpha+(1-alpha)*c2.getGreen());
 		int b=(int)(c1.getBlue()*alpha+(1-alpha)*c2.getBlue());
 		return new Color(r,g,b);
