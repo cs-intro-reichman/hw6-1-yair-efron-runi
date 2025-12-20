@@ -145,7 +145,6 @@ public class Runigram {
 				image[i][j]=luminance(image[i][j]);
 				
 			}
-			System.out.println();
 		}
 		return image;
 	}	
@@ -207,7 +206,21 @@ public class Runigram {
 	 * of the source image.
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
-		//// Replace this comment with your code
+		int h0 = source.length;
+    int w0 = source[0].length;
+
+    if (target.length != h0 || target[0].length != w0) {
+        target = scaled(target, w0, h0); 
+    }
+
+    for (int i = 0; i <= n; i++) {
+        double alpha = (double) (n - i) / (double) n;
+
+        Color[][] frame = blend(source, target, alpha);
+
+        display(frame);
+        StdDraw.pause(500);
+    }
 	}
 	
 	/** Creates a canvas for the given image. */
